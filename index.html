@@ -34,6 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/index.js"></script>
+  <script type="module" src="static/js/pdf-figures.js"></script>
   <script>
     window.MathJax = {
       loader: {load: ['[tex]/color']},
@@ -143,7 +144,9 @@
           <p>The framework that allows for these proofs, which we term <strong>InfoLDM</strong>, is a generalization of existing SSL approaches.</p>
         </div>
         <figure class="paper-figure">
-          <img src="static/images/overview.webp" style="max-width: 300px; margin-inline: auto;" alt="InfoLDM maps observations with multiple possible futures into latent space, combining a predictive model with representation entropy.">
+          <div class="pdf-figure" data-pdf="static/pdfs/overview.pdf" style="max-width: 300px; margin-inline: auto;">
+            <img src="static/images/overview.webp" alt="InfoLDM maps observations with multiple possible futures into latent space, combining a predictive model with representation entropy.">
+          </div>
           <figcaption>InfoLDM maximizes the goal function $\mathcal F$: The likelihood of a predictive model constrains the latent distribution, while entropy keeps representations informative.</figcaption>
         </figure>
         <div class="content has-text-justified">
@@ -222,14 +225,18 @@
         <p>InfoLDM receives the corrupted videos as input and learns a latent model. As comparison we also train generative models that reconstruct the input (additionally to latent prediction). Only the non-generative models find meaningful representations.</p>
       </div>
       <figure class="paper-figure">
-        <img src="static/images/hopper-umap.webp" style="max-width: 500px; margin-inline: auto;" loading="lazy" alt="UMAP projections of physical variables, image data, generative representations, and latent predictive representations, colored by physical state.">
+        <div class="pdf-figure" data-pdf="static/pdfs/hopper_umap.pdf" style="max-width: 500px; margin-inline: auto;">
+          <img src="static/images/hopper-umap.webp" loading="lazy" alt="UMAP projections of physical variables, image data, generative representations, and latent predictive representations, colored by physical state.">
+        </div>
         <figcaption><strong>Representation geometry.</strong> The latent predictive model recovers structure related to the physical state that is obscured in the observed images.</figcaption>
       </figure>
       <div class="content has-text-justified">
         <p>We can quantify this with linear readout probes.</p>
       </div>
       <figure class="paper-figure">
-        <img src="static/images/hopper-bars.webp" style="max-width: 500px; margin-inline: auto;" loading="lazy" alt="Linear readout R squared for Hopper height, torso orientation, and joint states. Latent predictive representations show high recovery compared with generative and next-observation baselines.">
+        <div class="pdf-figure" data-pdf="static/pdfs/hopper_bars.pdf" style="max-width: 500px; margin-inline: auto;">
+          <img src="static/images/hopper-bars.webp" loading="lazy" alt="Linear readout R squared for Hopper height, torso orientation, and joint states. Latent predictive representations show high recovery compared with generative and next-observation baselines.">
+        </div>
         <figcaption><strong>Recovering the physical state.</strong> Linear probes can read out height, torso orientation, and joint states from the learned representations. We also compare with 'next observation' models, which aim to predict the next image.</figcaption>
       </figure>
       <div class="content has-text-justified">
@@ -251,7 +258,9 @@
         <p>In the object-signal setting shown below, <strong>object position, rotation, and hue</strong> are coupled across image pairs. <strong>Lighting and background</strong> are unrelated. InfoLDM recovers the object (signal) variables such that they can be linearly read out from the representation, while background (nuisance) variables are ignored.</p>
       </div>
       <figure class="paper-figure image-results">
-        <img src="static/images/image-results.webp" style="max-width: 500px; margin-inline: auto;" loading="lazy" alt="Stochastic image pairs with correlated object position, rotation, and color, but uncorrelated lighting and background. Linear probes recover signal factors strongly and nuisance factors weakly.">
+        <div class="pdf-figure" data-pdf="static/pdfs/images.pdf" style="max-width: 500px; margin-inline: auto;">
+          <img src="static/images/image-results.webp" loading="lazy" alt="Stochastic image pairs with correlated object position, rotation, and color, but uncorrelated lighting and background. Linear probes recover signal factors strongly and nuisance factors weakly.">
+        </div>
         <figcaption><strong>Stochastic does not mean nuisance.</strong> The model recovers causally related factors even though the relation is stochastic.</figcaption>
       </figure>
       <div class="content has-text-justified">
@@ -271,7 +280,9 @@
         <p>How does  InfoLDM  allow us to prove this recovery under nuisance? Here is a short overview of the formal framework:</p>
       </div>
       <figure class="paper-figure">
-        <img src="static/images/model.png" style="max-width: 700px; margin-inline: auto;"  loading="lazy" alt="Graphical model showing context, signal, and nuisance generating observations, with encoders mapping observations and context into a predictive latent model.">
+        <div class="pdf-figure" data-pdf="static/pdfs/model.pdf" style="max-width: 700px; margin-inline: auto;">
+          <img src="static/images/model.png" loading="lazy" alt="Graphical model showing context, signal, and nuisance generating observations, with encoders mapping observations and context into a predictive latent model.">
+        </div>
         <figcaption><strong>Generative and learned models.</strong> Observations $x$ combine signal and nuisance; encoders map observations and context into representations connected by a predictive latent model.</figcaption>
       </figure>
       <div class="content has-text-justified">

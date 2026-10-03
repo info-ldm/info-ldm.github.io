@@ -23,9 +23,51 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.pdf-figure canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pdf-figure img[hidden] {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --primary-color: #83b4ff;
+    --primary-hover: #a3c9ff;
+    --text-primary: #e6edf3;
+    --text-secondary: #a8b5c7;
+    --text-light: #94a3b8;
+    --background-primary: #161b22;
+    --background-secondary: #1c232d;
+    --background-accent: #263345;
+    --border-color: #354152;
+  }
+
+  .content h1, .content h2, .content h3,
+  .content h4, .content h5, .content h6,
+  .title, .subtitle, .hero.is-light, .hero.is-light .title, .hero.is-light .subtitle, strong {
+    color: var(--text-primary);
+  }
+
+  a {
+    color: var(--primary-color);
+  }
+
+  .button {
+    background: var(--background-accent);
+    color: var(--text-primary);
+  }
+
+}
+
 /* Smooth scrolling for better UX */
 html {
   scroll-behavior: smooth;
+  background-color: var(--background-primary);
 }
 
 body {
@@ -65,6 +107,12 @@ body {
 .button.is-dark:active {
   transform: translateY(0);
   box-shadow: var(--shadow-md);
+}
+
+@media (prefers-color-scheme: dark) {
+  .button.is-dark {
+    color: #000000 !important;
+  }
 }
 
 .footer .icon-link {

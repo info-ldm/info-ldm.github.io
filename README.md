@@ -4,6 +4,19 @@
 
 A clean, responsive template for academic project pages.
 
+## Local preview
+
+From the repository directory, run:
+
+```sh
+python3 scripts/preview.py
+```
+
+This starts a local HTTP server and opens the website in your browser.
+Keep the terminal running and press Ctrl+C to stop.
+Opening `index.html` directly with a `file://` URL prevents the PDF figures from loading.
+PDF.js and its matching worker are bundled in `static/js/vendor/pdfjs` (version 6.4.299, legacy build).
+
 
 Example project pages built using this template are:
 - https://horwitz.ai/probex
