@@ -52,7 +52,7 @@ async function initializeFigure(figure) {
       canvas.width = Math.ceil(viewport.width * density);
       canvas.height = Math.ceil(viewport.height * density);
       canvas.setAttribute('role', 'img');
-      canvas.setAttribute('aria-label', fallback.alt);
+      canvas.setAttribute('aria-label', figure.dataset.alt || fallback?.alt || 'PDF figure');
       const styles = getComputedStyle(figure);
       const background = styles.getPropertyValue('--background-primary').trim();
       if (darkMode.matches) {
@@ -71,7 +71,7 @@ async function initializeFigure(figure) {
         if (currentCanvas) currentCanvas.replaceWith(canvas);
         else figure.append(canvas);
         currentCanvas = canvas;
-        fallback.hidden = true;
+        if (fallback) fallback.hidden = true;
       } catch (error) {
         if (error.name !== 'RenderingCancelledException') {
           console.error('PDF figure could not be rendered:', figure.dataset.pdf, error);

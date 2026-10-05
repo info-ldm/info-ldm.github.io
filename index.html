@@ -117,7 +117,7 @@
             </div>
             <div class="column has-text-centered">
               <div class="publication-links">
-                <span class="link-block"><a href="static/pdfs/2609.37789v1.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></span><span>Paper</span></a></span>
+                <span class="link-block"><a href="https://arxiv.org/pdf/2609.37789" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></span><span>Paper</span></a></span>
                 <span class="link-block"><a href="https://github.com/fmi-basel/identifiable-stochastic-nuisance" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span><span>Code</span></a></span>
                 <span class="link-block"><a href="https://arxiv.org/abs/2609.37789" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-external-link-alt" aria-hidden="true"></i></span><span>arXiv</span></a></span>
               </div>
@@ -241,6 +241,18 @@
       </figure>
       <div class="content has-text-justified">
         <p>Because generative models try to predict or encode every detail in the images, which is too challenging, they consistently fail. InfoLDM directly learns the latents dynamics of the nonlinear system and recovers the underlying variables.</p>
+        <p>We can also use the learned dynamics to simulate the system: we provide observations for 5 timesteps and query the latent model to generate future trajectories of the underlying physical variables.</p>
+      </div>
+      <figure class="paper-figure">
+        <picture>
+          <source srcset="static/videos/hopper_rollout_sequence_102_dark.gif" media="(prefers-color-scheme: dark)">
+          <img src="static/videos/hopper_rollout_sequence_102.gif" style="max-width: 700px; margin-inline: auto;" loading="lazy" alt="Animated rollout of the Hopper system using the learned latent dynamics.">
+        </picture>
+        <figcaption><strong>Simulating the system.</strong> Rolling out the learned latent dynamics lets us simulate how the physical state evolves over time. The model was trained on 8-step sequences and generalizes beyond that. Shaded areas denote 65% sampling intervals. Uncertainty accumulates over time.</figcaption>
+        <!-- <figcaption><strong>Simulating the system.</strong> Rolling out the learned latent dynamics lets us simulate how the physical state evolves over time. Shaded areas denote 65% sampling intervals. The right plot shows mean and 65% intervals when sampling the true simulated system, which does not have to deal with observation nuisance.</figcaption> -->
+      </figure>
+      <div class="content has-text-justified">
+        <p>Because InfoLDM is based on a probabilistic latent model, we get calibrated uncertainty estimates for free! This uncertainty combines effects of stochastic environment dynamics, observation nuisance, and a potentially imperfect model.</p>
       </div>
     </div>
   </div>
